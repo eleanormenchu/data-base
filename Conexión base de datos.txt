@@ -1,0 +1,36 @@
+package uspg.gt.javaconexionbasededatosprogramacion;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class ConexionBasedeDatos {
+    
+    Connection conectar = null;
+    
+    String usuario = "postgres";
+    String contraseña = "Programacion2";
+    String basededatos = "BasedeDatosProgramacion";
+    String ip = "localhost";
+    String puerto = "5432";
+    
+    String cadena = "jdbc:postgresql://" + ip + ":" + puerto + "/" + basededatos;
+    
+    public Connection EstablerConexion(){
+        
+        try {
+            
+            Class.forName("org.postgresql.Driver");
+            conectar = DriverManager.getConnection(cadena,usuario,contraseña);
+            System.out.println("Se ha realizado la conexion correctamente");
+            
+        }
+        
+        catch (Exception e){
+            System.out.println("Erro al conectar con la base de datos: " + e.toString());
+        }
+        
+        return conectar;
+        
+    }
+    
+}

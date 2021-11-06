@@ -1,0 +1,23 @@
+--Tabla categoria
+create table categoria(
+	idcategoria serial primary key,
+	nombre varchar (50) not null unique,
+	descripcion varchar(256) null,
+	condicion boolean not null default true
+);
+
+insert into categoria (nombre, descripcion) values ('ceriales','');
+select * from categoria;
+
+--tabla articulo
+create table articulo(
+	idarticulo serial primary key,
+	idcategoria integer not null,
+	codigo varchar(50) null,
+	nombre varchar(100) not null unique,
+	precio_venta decimal(11,3) not null,
+	stock integer not null,
+	descripcion varchar (256) null,
+	condicion boolean not null default true,
+	FOREIGN KEY (idcategoria) REFERENCES categoria(idcategoria)
+);

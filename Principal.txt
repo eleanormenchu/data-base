@@ -1,0 +1,19 @@
+package uspg.gt.javaconexionbasededatosprogramacion;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class Principal {
+    
+    public static void main(String[] args) throws SQLException {
+        Connection conectar2 = null;
+        
+        ConexionBasedeDatos conectar = new ConexionBasedeDatos();
+        conectar2 = conectar.EstablerConexion();
+        PreparedStatement st =  conectar2.prepareStatement("insert into alumnos(nombres,apellidos) values('Lenin','Pineda')");
+        st.executeUpdate();
+        st.close();
+    }
+    
+}
